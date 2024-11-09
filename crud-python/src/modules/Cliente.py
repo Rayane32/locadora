@@ -1,6 +1,8 @@
 
 import json 
 import os
+# from main import main
+
 class Cliente:
     def __init__(self):
         self.nome = ''
@@ -29,7 +31,8 @@ class Cliente:
         print("║  1. Cadastrar Cliente       📝                     ║")
         print("║  2. Listar Clientes         📋                     ║")
         print("║  3. Buscar Cliente          🔍                     ║")
-        print("║  4. Deletar Cliente         ❌                     ║")
+        print("║  4. Atualizar dados do Cliente 🔄                  ║")
+        print("║  5. Deletar Cliente         ❌                     ║")
         print("║  0. Voltar                                         ║")
         print("╚════════════════════════════════════════════════════╝")
     
@@ -40,11 +43,17 @@ class Cliente:
         while True:
             match self.opcao:
                 case 0:
-                    print('ok')
+                    break
                 case 1:
                     self.criarDadosCliente()
                 case 2:
                     self.listarClientes()
+                case 3:
+                    self.buscarCliente()
+                case 4:
+                     self.atualizarCliente()
+                case 5:
+                    self.deletarCliente()
                 case _:
                     print('\n')
                     print("╔════════════════════════════════════════════════════╗")
@@ -53,7 +62,6 @@ class Cliente:
                     print("╚════════════════════════════════════════════════════╝")
                     self.opcao = int(input("Digite uma opção válida: "))
             
-
     def criarDadosCliente(self):
         print("")
         print("╔════════════════════════════════════════════════════╗")
@@ -70,7 +78,179 @@ class Cliente:
         self.endereco = input("Endereço: ")
        
         self.create()
-           
+    
+    def listarClientes(self):
+        print("╔════════════════════════════════════════════════════╗")
+        print("║              LISTAGEM DE CLIENTES  📋              ║")
+        print("╚════════════════════════════════════════════════════╝")
+                       
+        dados = self.lerJson(self.arquivo_json_cliente)
+        for chave in dados:
+            cliente = dados[chave]
+            
+            print("")
+            print("╔═══════════════════ Cliente ════════════════════════╗")
+            print("║ Nome:", cliente['nome'])
+            print("║ CPF:", cliente['cpf']),
+            print("║ Data de nascimento: ", cliente['data_nascimento']),
+            print("║ E-mail: ", cliente['email']),
+            print("║ Telefone:", cliente['telefone']),
+            print("║ Endereço:", cliente['endereco']),
+            print("╚════════════════════════════════════════════════════╝")
+        
+        print("Deseja realizar mais alguma operação em Cliente?")
+        self.mainCliente()
+        
+    def buscarCliente(self):
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                BUSCAR CLIENTE  🔍                  ║")
+        print("╚════════════════════════════════════════════════════╝")
+        cpf = input("Informe o CPF do cliente que deseja buscar: ")
+
+        dados = self.lerJson(self.arquivo_json_cliente)
+
+        if cpf in dados:
+            cliente = dados[cpf]
+            print("")
+            print("╔═══════════════════ Cliente ════════════════════════╗")
+            print("║ Nome:", cliente['nome'])
+            print("║ CPF:", cliente['cpf'])
+            print("║ Data de nascimento:", cliente['data_nascimento'])
+            print("║ E-mail:", cliente['email'])
+            print("║ Telefone:", cliente['telefone'])
+            print("║ Endereço:", cliente['endereco'])
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+        else:
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+            print("Cliente não cadastrado em sistema.")
+
+        print("Deseja realizar mais alguma operação em Cliente?")
+        self.mainCliente()
+
+    def atualizarCliente(self):
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                ATUALIZAR CLIENTE  🔄               ║")
+        print("╚════════════════════════════════════════════════════╝")
+    
+        cpf = input("Informe o CPF do cliente que deseja atualizar: ")
+    
+        dados = self.lerJson(self.arquivo_json_cliente)
+    
+        if cpf in dados:
+            cliente = dados[cpf]
+        
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                   DADOS ATUAIS DO CLIENTE          ║")
+            print("╠════════════════════════════════════════════════════╣")
+            print(f"║ Nome: {cliente['nome']}")
+            print(f"║ CPF: {cliente['cpf']}")
+            print(f"║ Data de Nascimento: {cliente['data_nascimento']}")
+            print(f"║ E-mail: {cliente['email']}")
+            print(f"║ Telefone: {cliente['telefone']}")
+            print(f"║ Endereço: {cliente['endereco']}")
+            print("╚════════════════════════════════════════════════════╝")
+
+            while True:
+                print("\n╔════════════════════════════════════════════════════╗")
+                print("║               O QUE VOCÊ DESEJA ATUALIZAR?           ║")
+                print("╠══════════════════════════════════════════════════════╣")
+                print("║ 1. Nome                                              ║")
+                print("║ 2. Data de Nascimento                                ║")
+                print("║ 3. E-mail                                            ║")
+                print("║ 4. Telefone                                          ║")
+                print("║ 5. Endereço                                          ║")
+                print("║ 0. Sair                                              ║")
+                print("╚══════════════════════════════════════════════════════╝")
+            
+                opcao_atualizar = int(input("Escolha a opção de atualização: "))
+            
+                match opcao_atualizar:
+                    case 1:
+                        nome = input(f"Nome atual: {cliente['nome']}. Novo Nome: ")
+                        if nome:
+                            cliente['nome'] = nome
+                    case 2:
+                        data_nascimento = input(f"Data de Nascimento atual: {cliente['data_nascimento']}. Nova Data: ")
+                        if data_nascimento:
+                            cliente['data_nascimento'] = data_nascimento
+                    case 3:
+                        email = input(f"E-mail atual: {cliente['email']}. Novo E-mail: ")
+                        if email:
+                            cliente['email'] = email
+                    case 4:
+                        telefone = input(f"Telefone atual: {cliente['telefone']}. Novo Telefone: ")
+                        if telefone:
+                            cliente['telefone'] = telefone
+                    case 5:
+                        endereco = input(f"Endereço atual: {cliente['endereco']}. Novo Endereço: ")
+                        if endereco:
+                            cliente['endereco'] = endereco
+                    case 0:
+                        break
+                    case _:
+                        print("Opção inválida, por favor escolha uma opção válida.")
+
+                atualizar_cliente = input("Deseja atualizar outro dado? (s/n): ")
+                if atualizar_cliente.lower() != 's':
+                    break
+
+            dados[cpf] = cliente
+            self.escreverJson(self.arquivo_json_cliente, dados)
+        
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║          CLIENTE ATUALIZADO COM SUCESSO  ✅        ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+            
+        else:
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+            print("Cliente não cadastrado em sistema.")
+            print("")
+    
+        print("Deseja realizar mais alguma operação em Cliente?")
+        self.mainCliente()
+
+    def deletarCliente(self):
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                DELETAR CLIENTE  ❌                 ║")
+        print("╚════════════════════════════════════════════════════╝")
+        cpf = input("Informe o CPF do cliente a ser deletado: ")
+
+        dados = self.lerJson(self.arquivo_json_cliente)
+
+        if cpf in dados:
+            del dados[cpf]
+            self.escreverJson(self.arquivo_json_cliente, dados)
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║          CLIENTE DELETADO COM SUCESSO  ✅          ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+            
+            print("Deseja realizar mais alguma operação em Cliente?")
+            self.mainCliente()
+        else:
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
+            print("Por favor, informe apenas CPFs cadastrados no sistema.")
+        
     def create(self):
         dados = self.lerJson(self.arquivo_json_cliente)
         
@@ -90,30 +270,10 @@ class Cliente:
         print("╔════════════════════════════════════════════════════╗")
         print("║        CADASTRO REALIZADO COM SUCESSO  ✅          ║")
         print("╚════════════════════════════════════════════════════╝")
+        print("")
         print("Deseja realizar mais alguma operação em Cliente?")
         self.mainCliente()
     
-    def listarClientes(self):
-        print("╔════════════════════════════════════════════════════╗")
-        print("║              LISTAGEM DE CLIENTES  📋              ║")
-        print("╚════════════════════════════════════════════════════╝")
-                       
-        dados = self.lerJson(self.arquivo_json_cliente)
-        for chave in dados:
-            cliente = dados[chave]
-            
-            print("")
-            print("╔════════════════════════════════════════════════════╗")
-            print("║ Nome:", cliente['nome'])
-            print("║ CPF:", cliente['cpf']),
-            print("║ Data de nascimento: ", cliente['data_nascimento']),
-            print("║ E-mail : ", cliente['email']),
-            print("║ Telefone:", cliente['telefone']),
-            print("║ Endereço:", cliente['endereco']),
-            print("╚════════════════════════════════════════════════════╝")
-        
-        print("Deseja realizar mais alguma operação em Cliente?")
-        self.mainCliente()
     
     def validarCPF(self, cpf):
         dados = self.lerJson(self.arquivo_json_cliente)
