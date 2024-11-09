@@ -3,6 +3,7 @@ from modules.Cliente import Cliente
 cliente = Cliente()
 
 def showMenu():
+    print("")
     print("╔════════════════════════════════════════════════════╗")
     print("║            BEM-VINDO AO SISTEMA DE GESTÃO          ║")
     print("║                     LOCADORA                       ║")
@@ -34,6 +35,7 @@ def main():
                     break
                 case 1:
                     cliente.mainCliente()
+                    main()
                 case 2:
                     print("╔════════════════════════════════════════════════════╗")
                     print("║                   MÓDULO CARRO                     ║")
@@ -51,3 +53,6 @@ def main():
                     opcao = int(input("Digite uma opção válida: "))
                     
 main()
+
+def teste():
+    print("teste")
