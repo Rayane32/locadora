@@ -1,8 +1,6 @@
 
 import json 
 import os
-# from main import main
-
 class Cliente:
     def __init__(self):
         self.nome = ''

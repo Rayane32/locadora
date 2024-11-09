@@ -53,6 +53,3 @@ def main():
                     opcao = int(input("Digite uma opção válida: "))
                     
 main()
-
-def teste():
-    print("teste")
