@@ -1,6 +1,8 @@
 from modules.Cliente import Cliente
+from modules.Carro import Carro
 
 cliente = Cliente()
+carro = Carro()
 
 def showMenu():
     print("")
@@ -37,6 +39,8 @@ def main():
                     cliente.mainCliente()
                     main()
                 case 2:
+                    carro.mainCars()
+                    main()
                     print("╔════════════════════════════════════════════════════╗")
                     print("║                   MÓDULO CARRO                     ║")
                     print("╚════════════════════════════════════════════════════╝")
