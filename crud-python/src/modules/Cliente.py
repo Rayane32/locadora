@@ -21,7 +21,7 @@ class Cliente:
 
         return caminho_json
         
-    def showMenuCliente(self):
+    def mostrarMenuCliente(self):
         print("")
         print("╔════════════════════════════════════════════════════╗")
         print("║                  MÓDULO CLIENTE                    ║")
@@ -34,8 +34,8 @@ class Cliente:
         print("║  0. Voltar                                         ║")
         print("╚════════════════════════════════════════════════════╝")
     
-    def mainCliente(self):
-        self.showMenuCliente()
+    def menuCliente(self):
+        self.mostrarMenuCliente()
         self.opcao = int(input("Escolha uma das opções que deseja: "))
         
         while True:
@@ -75,7 +75,7 @@ class Cliente:
         self.telefone = input("Telefone: ")
         self.endereco = input("Endereço: ")
        
-        self.create()
+        self.cadastrar()
     
     def listarClientes(self):
         print("╔════════════════════════════════════════════════════╗")
@@ -95,9 +95,10 @@ class Cliente:
             print("║ Telefone:", cliente['telefone']),
             print("║ Endereço:", cliente['endereco']),
             print("╚════════════════════════════════════════════════════╝")
-        
+    
+        print("")
         print("Deseja realizar mais alguma operação em Cliente?")
-        self.mainCliente()
+        self.menuCliente()
         
     def buscarCliente(self):
         print("")
@@ -127,9 +128,10 @@ class Cliente:
             print("╚════════════════════════════════════════════════════╝")
             print("")
             print("Cliente não cadastrado em sistema.")
+            print("")
 
         print("Deseja realizar mais alguma operação em Cliente?")
-        self.mainCliente()
+        self.menuCliente()
 
     def atualizarCliente(self):
         print("")
@@ -219,7 +221,7 @@ class Cliente:
             print("")
     
         print("Deseja realizar mais alguma operação em Cliente?")
-        self.mainCliente()
+        self.menuCliente()
 
     def deletarCliente(self):
         print("")
@@ -239,8 +241,6 @@ class Cliente:
             print("╚════════════════════════════════════════════════════╝")
             print("")
             
-            print("Deseja realizar mais alguma operação em Cliente?")
-            self.mainCliente()
         else:
             print("")
             print("╔════════════════════════════════════════════════════╗")
@@ -248,8 +248,12 @@ class Cliente:
             print("╚════════════════════════════════════════════════════╝")
             print("")
             print("Por favor, informe apenas CPFs cadastrados no sistema.")
+            print("")
+
+        print("Deseja realizar mais alguma operação em Cliente?")
+        self.menuCliente()
         
-    def create(self):
+    def cadastrar(self):
         dados = self.lerJson(self.arquivo_json_cliente)
         
         cliente = {}
@@ -270,7 +274,7 @@ class Cliente:
         print("╚════════════════════════════════════════════════════╝")
         print("")
         print("Deseja realizar mais alguma operação em Cliente?")
-        self.mainCliente()
+        self.menuCliente()
     
     
     def validarCPF(self, cpf):

@@ -4,7 +4,7 @@ from modules.Carro import Carro
 cliente = Cliente()
 carro = Carro()
 
-def showMenu():
+def mostrarMenu():
     print("")
     print("╔════════════════════════════════════════════════════╗")
     print("║            BEM-VINDO AO SISTEMA DE GESTÃO          ║")
@@ -23,7 +23,7 @@ def showMenu():
 
     
 def main():
-        showMenu()
+        mostrarMenu()
         opcao = int(input("Digite uma opção: "))
         
         while True:
@@ -36,7 +36,7 @@ def main():
                     exit()
                     break
                 case 1:
-                    cliente.mainCliente()
+                    cliente.menuCliente()
                     main()
                 case 2:
                     carro.mainCars()
