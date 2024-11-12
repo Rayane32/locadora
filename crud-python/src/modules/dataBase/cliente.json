@@ -14,5 +14,21 @@
         "telefone": "55989467",
         "data_nascimento": "05/03/2010",
         "endereco": "Rua rio da prata"
+    },
+    "71241158410": {
+        "nome": "Peterson Jesus",
+        "cpf": "71241158410",
+        "email": "petersonj.melo@gmail.com",
+        "telefone": "8198302121",
+        "data_nascimento": "23/05/2003",
+        "endereco": "rua rio oceanico 675"
+    },
+    "88828282": {
+        "nome": "Peterson Trajano",
+        "cpf": "88828282",
+        "email": "petersonj.melo@gmail.com",
+        "telefone": "81983738604",
+        "data_nascimento": "29/05/2003",
+        "endereco": "rua urupés, 11"
     }
 }
