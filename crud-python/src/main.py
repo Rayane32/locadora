@@ -39,11 +39,8 @@ def main():
                     cliente.menuCliente()
                     main()
                 case 2:
-                    carro.mainCars()
+                    carro.menuCarro()
                     main()
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   MÓDULO CARRO                     ║")
-                    print("╚════════════════════════════════════════════════════╝")
                 case 3:
                     print("╔════════════════════════════════════════════════════╗")
                     print("║                   MÓDULO ALUGUEL                   ║")
