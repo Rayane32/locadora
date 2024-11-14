@@ -1,4 +1,5 @@
 from modules.Cliente import Cliente
+from modules.Carro import Carro
 from modules.Aluguel import AluguelInstancer
 
 cliente = Cliente()
