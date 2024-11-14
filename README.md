@@ -44,7 +44,8 @@ Copiar código
 git clone https:[//github.com/seu-usuario/crud-python.git
 ](https://github.com/Rayane32/locadora.git)
 ## 🚀 Executando o Projeto
-Para executar o projeto, navegue até o diretório crud-python/src/main.py e execute o script index.py:
+Para executar o projeto, navegue até o diretório crud-python/src/main.py e execute o script main.py.
+Em seu terminal é necesário está dentro do repositório crud-python para que o main.py consiga rodar.
 
 ## 👥 Alunos
 **Nome de alunos que participaram do projeto:**
