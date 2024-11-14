@@ -39,7 +39,7 @@ class Cliente:
             
             match opcao:
                 case 0:
-                    return
+                    return 0
                 case 1:
                     self.criarDadosCliente()
                 case 2:
@@ -56,8 +56,7 @@ class Cliente:
                     print("║                   ESCOLHA INVÁLIDA!                ║")
                     print("║         Por favor, selecione uma opção válida.     ║")
                     print("╚════════════════════════════════════════════════════╝")
-                    print("Digite uma opção válida: ")
-                    opcao = int(input("Escolha uma das opções que deseja: "))
+                    print("Digite uma opção válida")
             
             self.menuCliente()                    
         
@@ -134,11 +133,12 @@ class Cliente:
             cliente = dados[cpf]
             print("╔════════════════════════════════════════════════════╗")
             print("║                   DADOS ATUAIS DO CLIENTE          ║")
-            print("╠════════════════════════════════════════════════════╣")
+            print("╚════════════════════════════════════════════════════╝")
             self.printarCliente(cliente)
 
             while True:
-                print("\n╔════════════════════════════════════════════════════╗")
+                print("\n")
+                print("╔══════════════════════════════════════════════════════╗")
                 print("║               O QUE VOCÊ DESEJA ATUALIZAR?           ║")
                 print("╠══════════════════════════════════════════════════════╣")
                 print("║ 1. Nome                                              ║")
