@@ -4,6 +4,8 @@ from modules.Aluguel import AluguelInstancer
 cliente = Cliente()
 carro = Carro()
 
+cliente = Cliente()
+aluguel = AluguelInstancer()
 def mostrarMenu():
     print("")
     print("╔════════════════════════════════════════════════════╗")
@@ -43,8 +45,8 @@ def main():
                     print("║                   MÓDULO CARRO                     ║")
                     print("╚════════════════════════════════════════════════════╝")
                 case 3:
-                   AluguelInstancer()
-                   break
+                   aluguel.menuAluguel()
+                   main()
                 case _:
                     print('\n')
                     print("╔════════════════════════════════════════════════════╗")
