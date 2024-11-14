@@ -1,9 +1,11 @@
 from modules.Cliente import Cliente
-from modules.Carro import Carro
+from modules.Aluguel import AluguelInstancer
 
 cliente = Cliente()
 carro = Carro()
 
+cliente = Cliente()
+aluguel = AluguelInstancer()
 def mostrarMenu():
     print("")
     print("╔════════════════════════════════════════════════════╗")
@@ -41,9 +43,7 @@ def main():
             carro.menuCarro()
 
         case 3:
-            print("╔════════════════════════════════════════════════════╗")
-            print("║                   MÓDULO ALUGUEL                   ║")
-            print("╚════════════════════════════════════════════════════╝")
+            aluguel.menuAluguel()
         case _:
             print('\n')
             print("╔════════════════════════════════════════════════════╗")

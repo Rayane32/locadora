@@ -132,7 +132,7 @@ class Carro:
             self.escreverJson(self.arquivo_json_carro, dados)
             print("")
             print("╔════════════════════════════════════════════════════╗")
-            print("║          CARRO ATUALIZADO COM SUCESSO  ✅          ║")
+            print("║          CARRO DELETADO COM SUCESSO  ✅            ║")
             print("╚════════════════════════════════════════════════════╝")
             print("")
         else:
