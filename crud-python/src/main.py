@@ -23,10 +23,11 @@ def mostrarMenu():
 
     
 def main():
-        mostrarMenu()
-        opcao = int(input("Digite uma opção: "))
         
         while True:
+            mostrarMenu()
+            opcao = int(input("Digite uma opção: "))
+
             match opcao:
                 case 0:
                     print("")
@@ -36,21 +37,22 @@ def main():
                     exit()
                     break
                 case 1:
-                    cliente.menuCliente()
-                    main()
+                    opcao = cliente.menuCliente()
+
                 case 2:
-                    carro.menuCarro()
-                    main()
+                    opcao = carro.menuCarro()
+
                 case 3:
                     print("╔════════════════════════════════════════════════════╗")
                     print("║                   MÓDULO ALUGUEL                   ║")
                     print("╚════════════════════════════════════════════════════╝")
                 case _:
-                    print('\n')
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   ESCOLHA INVÁLIDA!                ║")
-                    print("║         Por favor, selecione uma opção válida.     ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                    opcao = int(input("Digite uma opção válida: "))
+                    while opcao not in [0, 1, 2, 3]:
+                        print('\n')
+                        print("╔════════════════════════════════════════════════════╗")
+                        print("║                   ESCOLHA INVÁLIDA!                ║")
+                        print("║         Por favor, selecione uma opção válida.     ║")
+                        print("╚════════════════════════════════════════════════════╝")
+                        opcao = int(input("Digite uma opção válida: "))
                     
 main()

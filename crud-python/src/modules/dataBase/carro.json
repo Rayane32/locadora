@@ -1,50 +1,58 @@
 {
     "ABC1D23": {
-        "modelo": "Sedã",
+        "estilo": "Sedã",
         "marca": "Honda",
-        "nome": "Civic",
+        "modelo": "Civic",
         "ano": 2020,
         "cor": "Prata",
         "placa": "ABC1D23"
     },
     "DEF4G56": {
-        "modelo": "Sedã",
+        "estilo": "Sedã",
         "marca": "Toyota",
-        "nome": "Corolla",
+        "modelo": "Corolla",
         "ano": 2019,
         "cor": "Branco",
         "placa": "DEF4G56"
     },
     "GHI7H89": {
-        "modelo": "Hatch",
+        "estilo": "Hatch",
         "marca": "Chevrolet",
-        "nome": "Onix",
+        "modelo": "Onix",
         "ano": 2021,
         "cor": "Preto",
         "placa": "GHI7H89"
     },
     "JKL0L12": {
-        "modelo": "Hatch",
+        "estilo": "Hatch",
         "marca": "Volkswagen",
-        "nome": "Gol",
+        "modelo": "Gol",
         "ano": 2018,
         "cor": "Vermelho",
         "placa": "JKL0L12"
     },
     "ASD1D22": {
-        "modelo": "Sedã",
+        "estilo": "Sedã",
         "marca": "Toyota",
-        "nome": "Corolla",
+        "modelo": "Corolla",
         "ano": "2023",
         "cor": "Azul",
         "placa": "ASD1D22"
     },
     "KKJ1K11": {
-        "modelo": "Sedã",
+        "estilo": "Sedã",
         "marca": "Honda",
-        "nome": "Civic",
+        "modelo": "Civic",
         "ano": "2022",
         "cor": "Prata",
         "placa": "KKJ1K11"
+    },
+    "ADS1D15": {
+        "estilo": "Sedã",
+        "marca": "Fusion",
+        "modelo": "Ford",
+        "ano": "2023",
+        "cor": "Preto",
+        "placa": "ADS1D15"
     }
 }

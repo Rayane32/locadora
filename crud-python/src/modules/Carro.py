@@ -1,26 +1,28 @@
 import json 
 import os
+import re
 
 class Carro: 
 
-    def __init__(self):
-        self.modelo = ""
+    def __init__(self) -> None:
+        self.estilo = ""
         self.marca = ""
-        self.nome = ""
+        self.modelo = ""
         self.ano = ""
         self.cor = ""
         self.placa = ""
         self.arquivo_json_carro = self.inicializarJson()
 
-    def inicializarJson(self): 
+    def inicializarJson(self) -> str: 
         caminho_json = 'crud-python\\src\\modules\\dataBase\\carro.json'
+
         if not os.path.exists(caminho_json):
             with open(caminho_json, 'w') as arquivo:
                json.dump({}, arquivo)
 
         return caminho_json
 
-    def mostrarMenuCarros(self):
+    def selecionarOpcao(self) -> int:
         print("")
         print("╔════════════════════════════════════════════════════╗")
         print("║                  MÓDULO CARRO                      ║")
@@ -33,9 +35,12 @@ class Carro:
         print("║  0. Voltar                                         ║")
         print("╚════════════════════════════════════════════════════╝")
 
-    def menuCarro(self):
-        self.mostrarMenuCarros()
         opcao = int(input("Escolha uma das opções que deseja: "))
+
+        return opcao
+
+    def menuCarro(self) -> None:
+        opcao = self.selecionarOpcao()
         
         match opcao:
             case 1:
@@ -49,7 +54,7 @@ class Carro:
             case 5:
                 self.deletarVeiculo()
             case 0:
-                return
+                return 0
             case _:
                 print("╔════════════════════════════════════════════════════╗")
                 print("║                   OPCAO INVÁLIDA!                  ║")
@@ -60,7 +65,7 @@ class Carro:
         
         self.menuCarro()
 
-    def adicionarVeiculo(self):
+    def adicionarVeiculo(self) -> None:
         placaValidada = False
         
         while not placaValidada:
@@ -74,26 +79,26 @@ class Carro:
             placaValidada = self.validarPlaca(self.placa)
             
             if placaValidada:
-                self.modelo = input("Insira o modelo do carro: ").capitalize()
+                self.estilo = input("Insira o estilo do carro: ").capitalize()
                 self.marca = input("Insira a marca do carro: ").capitalize()
-                self.nome = input("Insira o nome do carro: ").capitalize()
+                self.modelo = input("Insira o modelo do carro: ").capitalize()
                 self.ano = input("Insira o ano do carro: ")
                 self.cor = input("Insira a cor do carro: ").capitalize()
-        
+
         self.criar()
 
-    def imprimirDados(self, veiculo):
+    def imprimirDados(self, veiculo: dict) -> None:
         print("")
         print("╔═══════════════════ Carro ════════════════════════╗")
-        print("║ Modelo:", veiculo['modelo'])
+        print("║ Estilo:", veiculo['estilo'])
         print("║ Marca:", veiculo['marca'])
-        print("║ Nome:", veiculo['nome'])
+        print("║ Modelo:", veiculo['modelo'])
         print("║ Ano:", veiculo['ano'])
         print("║ Cor:", veiculo['cor'])
         print("║ Placa:", veiculo['placa'])
         print("╚══════════════════════════════════════════════════╝")
 
-    def exibirFrota(self):
+    def exibirFrota(self) -> None:
         dados = self.lerJson(self.arquivo_json_carro)
         for placa in dados:
             self.imprimirDados(dados[placa])
@@ -101,7 +106,7 @@ class Carro:
         print("")
         print("Deseja realizar mais alguma operação no módulo de Carro?")
     
-    def pesquisarVeiculo(self):
+    def pesquisarVeiculo(self) -> None:
         dados = self.lerJson(self.arquivo_json_carro)
         placa = input("Insira a placa do carro: ").upper()
         if placa in dados:
@@ -117,7 +122,7 @@ class Carro:
         print("")
         print("Deseja realizar mais alguma operação no módulo de Carro?")
  
-    def deletarVeiculo(self):
+    def deletarVeiculo(self) -> None:
         placaPesquisa = input("Insira a placa do carro que deseja deletar: ").upper()
         dados = self.lerJson(self.arquivo_json_carro)
         
@@ -137,7 +142,7 @@ class Carro:
             print("╚════════════════════════════════════════════════════╝")
             print("")
 
-    def atualizarVeiculo(self):
+    def atualizarVeiculo(self) -> None:
         print("")
         print("╔════════════════════════════════════════════════════╗")
         print("║                ATUALIZAR CARRO   🔄                ║")
@@ -151,9 +156,9 @@ class Carro:
             print("Carro encontrado!")
             
             print("")
-            dados[placa]['modelo'] = input("Insira o modelo do carro: ").capitalize()
+            dados[placa]['estilo'] = input("Insira o estilo do carro: ").capitalize()
             dados[placa]['marca'] = input("Insira a marca do carro: ").capitalize()
-            dados[placa]['nome'] = input("Insira o nome do carro: ").capitalize()
+            dados[placa]['modelo'] = input("Insira o modelo do carro: ").capitalize()
             dados[placa]['ano'] = input("Insira o ano do carro: ")
             dados[placa]['cor'] = input("Insira a cor do carro: ").capitalize()
             
@@ -172,14 +177,14 @@ class Carro:
             print("Carro não cadastrado em sistema.")
             print("")
             
-    def criar(self):
+    def criar(self) -> None:
         dados = self.lerJson(self.arquivo_json_carro) 
         
         veiculo = {
             self.placa:{
-                "modelo": self.modelo,
+                "estilo": self.estilo,
                 "marca": self.marca,
-                "nome": self.nome,
+                "modelo": self.modelo,
                 "ano": self.ano,
                 "cor": self.cor,
                 "placa": self.placa
@@ -195,20 +200,30 @@ class Carro:
         print("")
         print("Deseja realizar mais alguma operação em módulo Carro?")
 
-    def validarPlaca(self, placa):
-        dados = self.lerJson(self.arquivo_json_carro)
+    def validarPlaca(self, placa: str) -> bool:
+
+        regex_placa = r"^[A-Z]{3}\d[A-Z]\d{2}$"
+
+        if bool(re.match(regex_placa, placa)):
+
+            dados = self.lerJson(self.arquivo_json_carro)
+            
+            if placa in dados:
+                print('')
+                print('Placa já cadastrada no sistema!')
+                print('Informe uma nova placa')
+                return False
+            return True
         
-        if placa in dados:
-            print('')
-            print('Placa já cadastrada no sistema!')
+        else:
+            print('\nPlaca inválida!')
             print('Informe uma nova placa')
             return False
-        return True
         
-    def lerJson(self, arquivo):
+    def lerJson(self, arquivo: dict) -> dict:
         with open(arquivo, 'r', encoding = "utf-8") as j:
             return json.load(j)
     
-    def escreverJson(self, arquivo, dados):
+    def escreverJson(self, arquivo: dict, dados: dict) -> None:
         with open(arquivo, 'w', encoding = "utf-8") as j:
             json.dump(dados, j, indent=4, ensure_ascii = False)
