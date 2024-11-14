@@ -3,9 +3,8 @@ from modules.Aluguel import AluguelInstancer
 
 cliente = Cliente()
 carro = Carro()
-
-cliente = Cliente()
 aluguel = AluguelInstancer()
+
 def mostrarMenu():
     print("")
     print("╔════════════════════════════════════════════════════╗")
