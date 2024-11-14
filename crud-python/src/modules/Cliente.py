@@ -1,8 +1,6 @@
 
 import json 
 import os
-
-
 class Cliente:
     def __init__(self):
         self.nome = ''
@@ -82,8 +80,6 @@ class Cliente:
        
         self.cadastrar()
     
-
-
     def listarClientes(self):
         print("")
         print("╔════════════════════════════════════════════════════╗")
@@ -101,7 +97,10 @@ class Cliente:
         print("Deseja realizar mais alguma operação em Cliente?")
         
     def buscarCliente(self):
-        self.caixaDeTexto("BUSCAR CLIENTE  🔍")
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                BUSCAR CLIENTE  🔍                  ║")
+        print("╚════════════════════════════════════════════════════╝")
         cpf = input("Informe o CPF do cliente que deseja buscar: ")
 
         dados = self.lerJson(self.arquivo_json_cliente)
@@ -112,14 +111,21 @@ class Cliente:
             self.printarCliente(cliente)
             print("")
         else:
-            self.caixaDeTexto("CPF NÃO ENCONTRADO!")
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
             print("Cliente não cadastrado em sistema.")
             print("")
 
         print("Deseja realizar mais alguma operação em Cliente?")
 
     def atualizarCliente(self):
-        self.caixaDeTexto(" ATUALIZAR CLIENTE  🔄")
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                ATUALIZAR CLIENTE  🔄               ║")
+        print("╚════════════════════════════════════════════════════╝")
     
         cpf = input("Informe o CPF do cliente que deseja atualizar: ")
         dados = self.lerJson(self.arquivo_json_cliente)
@@ -185,14 +191,21 @@ class Cliente:
             print("╚════════════════════════════════════════════════════╝")
             print("")
         else:
-            self.caixaDeTexto("CPF NÃO ENCONTRADO!")
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
             print("Cliente não cadastrado em sistema.")
             print("")
     
         print("Deseja realizar mais alguma operação em Cliente?")
 
     def deletarCliente(self):
-        self.caixaDeTexto("DELETAR CLIENTE  ❌")
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║                DELETAR CLIENTE  ❌                 ║")
+        print("╚════════════════════════════════════════════════════╝")
         cpf = input("Informe o CPF do cliente a ser deletado: ")
 
         dados = self.lerJson(self.arquivo_json_cliente)
@@ -206,7 +219,11 @@ class Cliente:
             print("╚════════════════════════════════════════════════════╝")
             print("")
         else:
-            self.caixaDeTexto("CPF NÃO ENCONTRADO!")
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║              CPF NÃO ENCONTRADO!                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+            print("")
             print("Por favor, informe apenas CPFs cadastrados no sistema.")
             print("")
 
@@ -237,7 +254,11 @@ class Cliente:
         dados.update(cliente)
         self.escreverJson(self.arquivo_json_cliente, dados)
         
-        self.caixaDeTexto("CADASTRO REALIZADO COM SUCESSO  ✅ ")
+        print("")
+        print("╔════════════════════════════════════════════════════╗")
+        print("║        CADASTRO REALIZADO COM SUCESSO  ✅          ║")
+        print("╚════════════════════════════════════════════════════╝")
+        print("")
         print("Deseja realizar mais alguma operação em Cliente?")
     
     def validarCPF(self, cpf):
