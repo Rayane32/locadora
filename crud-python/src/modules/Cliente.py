@@ -39,7 +39,7 @@ class Cliente:
             
             match opcao:
                 case 0:
-                    return 0
+                    return
                 case 1:
                     self.criarDadosCliente()
                 case 2:

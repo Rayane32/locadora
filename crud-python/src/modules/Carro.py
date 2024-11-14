@@ -54,7 +54,7 @@ class Carro:
             case 5:
                 self.deletarVeiculo()
             case 0:
-                return 0
+                return
             case _:
                 print("")
                 print("╔════════════════════════════════════════════════════╗")
