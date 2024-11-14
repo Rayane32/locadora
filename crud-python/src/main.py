@@ -1,6 +1,8 @@
 from modules.Cliente import Cliente
+from modules.Carro import Carro
 
 cliente = Cliente()
+carro = Carro()
 
 def mostrarMenu():
     print("")
@@ -21,35 +23,34 @@ def mostrarMenu():
 
     
 def main():
-        mostrarMenu()
-        opcao = int(input("Digite uma opção: "))
-        
-        while True:
-            match opcao:
-                case 0:
-                    print("")
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                 SAINDO DO SISTEMA...               ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                    exit()
-                    break
-                case 1:
-                    cliente.menuCliente()
-                    main()
-                case 2:
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   MÓDULO CARRO                     ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                case 3:
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   MÓDULO ALUGUEL                   ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                case _:
-                    print('\n')
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   ESCOLHA INVÁLIDA!                ║")
-                    print("║         Por favor, selecione uma opção válida.     ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                    opcao = int(input("Digite uma opção válida: "))
-                    
+    mostrarMenu()
+    opcao = int(input("Digite uma opção: "))
+
+    match opcao:
+        case 0:
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                 SAINDO DO SISTEMA...               ║")
+            print("╚════════════════════════════════════════════════════╝")
+            exit()
+            return
+        case 1:
+            cliente.menuCliente()
+
+        case 2:
+            carro.menuCarro()
+
+        case 3:
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                   MÓDULO ALUGUEL                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+        case _:
+            print('\n')
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                 ESCOLHA INVÁLIDA! ❌               ║")
+            print("║         Por favor, selecione uma opção válida.     ║")
+            print("╚════════════════════════════════════════════════════╝")
+            
+    main()          
+    
 main()

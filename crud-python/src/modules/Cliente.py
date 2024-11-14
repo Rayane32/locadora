@@ -39,7 +39,7 @@ class Cliente:
             
             match opcao:
                 case 0:
-                    return
+                    return 0
                 case 1:
                     self.criarDadosCliente()
                 case 2:
@@ -81,6 +81,7 @@ class Cliente:
         self.cadastrar()
     
     def listarClientes(self):
+        print("")
         print("╔════════════════════════════════════════════════════╗")
         print("║              LISTAGEM DE CLIENTES  📋              ║")
         print("╚════════════════════════════════════════════════════╝")
