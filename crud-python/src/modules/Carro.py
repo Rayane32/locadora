@@ -56,12 +56,12 @@ class Carro:
             case 0:
                 return 0
             case _:
+                print("")
                 print("╔════════════════════════════════════════════════════╗")
                 print("║                   OPCAO INVÁLIDA!                  ║")
                 print("║         Por favor, selecione uma opção válida.     ║")
                 print("╚════════════════════════════════════════════════════╝")
                 print("Opção inválida. Tente novamente.")
-                opcao = int(input("Escolha uma das opções que deseja: "))
         
         self.menuCarro()
 

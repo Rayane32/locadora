@@ -23,36 +23,34 @@ def mostrarMenu():
 
     
 def main():
-        
-        while True:
-            mostrarMenu()
-            opcao = int(input("Digite uma opção: "))
+    mostrarMenu()
+    opcao = int(input("Digite uma opção: "))
 
-            match opcao:
-                case 0:
-                    print("")
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                 SAINDO DO SISTEMA...               ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                    exit()
-                    break
-                case 1:
-                    opcao = cliente.menuCliente()
+    match opcao:
+        case 0:
+            print("")
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                 SAINDO DO SISTEMA...               ║")
+            print("╚════════════════════════════════════════════════════╝")
+            exit()
+            return
+        case 1:
+            cliente.menuCliente()
 
-                case 2:
-                    opcao = carro.menuCarro()
+        case 2:
+            carro.menuCarro()
 
-                case 3:
-                    print("╔════════════════════════════════════════════════════╗")
-                    print("║                   MÓDULO ALUGUEL                   ║")
-                    print("╚════════════════════════════════════════════════════╝")
-                case _:
-                    while opcao not in [0, 1, 2, 3]:
-                        print('\n')
-                        print("╔════════════════════════════════════════════════════╗")
-                        print("║                   ESCOLHA INVÁLIDA!                ║")
-                        print("║         Por favor, selecione uma opção válida.     ║")
-                        print("╚════════════════════════════════════════════════════╝")
-                        opcao = int(input("Digite uma opção válida: "))
-                    
+        case 3:
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                   MÓDULO ALUGUEL                   ║")
+            print("╚════════════════════════════════════════════════════╝")
+        case _:
+            print('\n')
+            print("╔════════════════════════════════════════════════════╗")
+            print("║                 ESCOLHA INVÁLIDA! ❌               ║")
+            print("║         Por favor, selecione uma opção válida.     ║")
+            print("╚════════════════════════════════════════════════════╝")
+            
+    main()          
+    
 main()
